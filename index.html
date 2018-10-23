@@ -1,0 +1,113 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 230px;
+            overflow: auto;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }       
+        .show {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>This is testing my skills with dropdown search</h1>
+    <div id="object"></div>
+    <button onClick={handleShowItems()}>
+        Click to Dropdown
+    </button>
+    <div id="myDropdown" class="dropdown-content">
+        <input type="search" placeholder="Search.." id="myInput" onkeyup={searchItems()} />
+        <div>Bob</div>
+        <div>Dan</div>
+        <div>Joe</div>
+        <div>Jan</div>
+        <div>George</div>
+    </div>
+    <script>
+        handleShowItems = () => {
+            document.getElementById("myDropdown").classList.toggle("show");
+            console.log("Dropdown button clicked")
+        }
+
+        searchItems = () => {
+            let input = document.getElementById("myInput");
+            let filter = input.value.toUpperCase();
+            let section = document.getElementById("myDropdown")
+            // let div = document.getElementById("myDropdown");
+            let items = section.getElementsByTagName("div");
+            for (i = 0; i < items.length; i++) {
+                if (items[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+.show {display: block;}
+</style>
+</head>
+
+<body>
+
+    <h2>Search/Filter Dropdown</h2>
+    <p>Click on the button to open the dropdown menu, and use the input field to search for a specific dropdown link.</p>
+
+    <input type="text" placeholder="Search.." id="myInput" onkeyup={filterFunction()}>
+
+
+    <button onClick={handleShowItems()}>Dropdown</button>
+
+    <div id="myDropdown" class="dropdown-content">
+        <div>Tools</div>
+        <div>Hello</div>
+    </div>
+
+
+    <script>
+
+        handleShowItems = () => {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+
+    </script>
+
+</body>
+
+</html> -->
